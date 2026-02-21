@@ -1,33 +1,49 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import Svg, { Path } from 'react-native-svg';
 
 export default function DeletedLinkMessage() {
   return (
     <View style={styles.container}>
-      <Feather name="check" size={18} color="#E74C3C" />
-      <Text style={styles.text}>Link deleted</Text>
+      <View style={styles.content}>
+        <Svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <Path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M13.8047 3.52851C14.0651 3.78886 14.0651 4.21097 13.8047 4.47132L6.4714 11.8047C6.21106 12.065 5.78894 12.065 5.5286 11.8047L2.19526 8.47132C1.93491 8.21097 1.93491 7.78886 2.19526 7.52851C2.45561 7.26816 2.87772 7.26816 3.13807 7.52851L6 10.3904L12.8619 3.52851C13.1223 3.26816 13.5444 3.26816 13.8047 3.52851Z"
+            fill="#171717"
+          />
+        </Svg>
+        <Text style={styles.text}>Link deleted</Text>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 16,
+    gap: 8,
+    width: 343,
+    height: 76,
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1,
+    borderColor: '#DC2626',
+    borderRadius: 12,
+    alignSelf: 'stretch',
+  },
+  content: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#FFFFFF',
-    borderRadius: 18,
-    padding: 16,
-    marginHorizontal: 20,
-    marginBottom: 12,
-    borderWidth: 1.5,
-    borderColor: '#E74C3C',
-    gap: 10,
+    gap: 8,
   },
   text: {
-    fontSize: 15,
-    fontWeight: '600',
-    color: '#333333',
+    fontSize: 14,
+    fontWeight: '500',
+    lineHeight: 20,
+    color: '#171717',
   },
 });

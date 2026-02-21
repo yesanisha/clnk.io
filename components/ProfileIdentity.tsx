@@ -38,7 +38,7 @@ export default function ProfileIdentity({
             onPress={onEditPress}
             activeOpacity={0.7}
           >
-            <Feather name="edit-2" size={14} color="#4A5568" />
+            <Feather name="edit-2" size={12} color="#334155" />
           </TouchableOpacity>
         </View>
 
@@ -57,78 +57,91 @@ export default function ProfileIdentity({
       </View>
 
       {/* Bio */}
-      <Text style={styles.bio} numberOfLines={2}>
-        {bio}
-      </Text>
+      {bio && (
+        <Text style={styles.bio} numberOfLines={2}>
+          {bio}
+        </Text>
+      )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 20,
-    paddingHorizontal: 20,
-    backgroundColor: '#FFFFFF',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    padding: 2,
+    gap: 12,
+    width: 343,
+    height: 120,
+    borderRadius: 12,
+    opacity: 1,
+    backgroundColor: 'transparent',
   },
   topRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 12,
-    gap: 16,
+    gap: 12,
   },
   profilePhotoContainer: {
     position: 'relative',
   },
   profilePhoto: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
-    backgroundColor: '#E8E8E8',
+    width: 64,
+    height: 64,
+    borderRadius: 9999,
+    backgroundColor: '#E8EFD8',
+    borderWidth: 1,
+    borderColor: '#E5E5E5',
     justifyContent: 'center',
     alignItems: 'center',
+    opacity: 1,
   },
   profileInitial: {
-    fontSize: 32,
+    fontSize: 28,
     fontWeight: '500',
-    color: '#666666',
+    color: '#737373',
   },
   editButton: {
     position: 'absolute',
     bottom: 0,
     right: 0,
-    width: 32,
-    height: 32,
-    borderRadius: 16,
-    backgroundColor: '#FFFFFF',
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    backgroundColor: '#FAFAFA',
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 1.5,
-    borderColor: '#E8E8E8',
+    borderWidth: 1,
+    borderColor: '#E5E5E5',
   },
   nameContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
+    justifyContent: 'space-between',
+    gap: 8,
     flex: 1,
   },
   name: {
-    fontSize: 22,
-    fontWeight: '600',
-    color: '#000000',
+    fontSize: 20,
+    fontWeight: '500',
+    lineHeight: 28,
+    letterSpacing: 0,
+    color: '#171717',
   },
   chevronDown: {
-    width: 10,
-    height: 6,
+    width: 16,
+    height: 16,
     position: 'relative',
-    marginTop: 8,
+    flexShrink: 0,
   },
   chevronDownLeft: {
     position: 'absolute',
     width: 6,
     height: 1.5,
-    backgroundColor: '#666666',
-    left: 0,
-    bottom: 0,
+    backgroundColor: '#52525B',
+    left: 3,
+    top: 6,
     transform: [{ rotate: '45deg' }],
     borderRadius: 1,
   },
@@ -136,16 +149,16 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: 6,
     height: 1.5,
-    backgroundColor: '#666666',
-    right: 0,
-    bottom: 0,
+    backgroundColor: '#52525B',
+    right: 3,
+    top: 6,
     transform: [{ rotate: '-45deg' }],
     borderRadius: 1,
   },
   bio: {
     fontSize: 14,
     lineHeight: 20,
-    color: '#666666',
-    paddingLeft: 0,
+    color: '#737373',
+    alignSelf: 'stretch',
   },
 });

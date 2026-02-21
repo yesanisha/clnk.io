@@ -53,36 +53,38 @@ export default function AddLinksSection({ onAddLink }: AddLinksSectionProps) {
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 20,
-    paddingHorizontal: 20,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'transparent',
   },
   title: {
-    fontSize: 15,
-    color: '#666666',
+    fontSize: 14,
+    fontWeight: '500',
+    color: '#52525B',
     marginBottom: 16,
   },
   buttonsContainer: {
     flexDirection: 'row',
-    gap: 12,
+    gap: 8,
   },
   actionButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
-    backgroundColor: '#F5F5F5',
+    justifyContent: 'center',
+    gap: 8,
+    backgroundColor: '#E4E4E7',
     paddingHorizontal: 16,
-    paddingVertical: 10,
-    borderRadius: 12,
+    paddingVertical: 8,
+    borderRadius: 6,
+    minHeight: 40,
   },
   buttonIcon: {
     fontSize: 16,
-    color: '#4A5568',
+    color: '#52525B',
     fontWeight: '500',
   },
   buttonText: {
     fontSize: 14,
-    color: '#4A5568',
     fontWeight: '500',
+    color: '#52525B',
+    textAlign: 'center',
   },
 });

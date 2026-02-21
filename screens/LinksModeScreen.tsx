@@ -31,7 +31,7 @@ export default function LinksModeScreen({ onModePress }: LinksModeScreenProps) {
       id: '3',
       type: 'linkedin',
       title: 'My LinkedIn',
-      value: 'https://www.linkedin.com/company/star...',
+      value: 'https://www.linkedin.com/company/starving `',
     },
   ]);
 
@@ -112,20 +112,24 @@ export default function LinksModeScreen({ onModePress }: LinksModeScreenProps) {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#FAFAFA',
   },
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#FAFAFA',
+    paddingHorizontal: 16,
+    paddingTop: 24,
   },
   scrollView: {
     flex: 1,
+    marginTop: 24,
   },
   scrollContent: {
     paddingBottom: 20,
+    gap: 24,
   },
   linksContainer: {
-    paddingTop: 8,
+    gap: 16,
   },
   bottomSpacer: {
     height: 80,
@@ -135,6 +139,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: '#ffffff',
+    backgroundColor: 'transparent',
   },
 });

@@ -19,6 +19,7 @@ import LongLinkInput from '../components/LongLinkInput';
 import ShortLinkCard from '../components/ShortLinkCard';
 import LinkOptionsBottomSheet from '../components/LinkOptionsBottomSheet';
 import DeleteConfirmationModal from '../components/DeleteConfirmationModal';
+import QRCodeModal from '../components/QRCodeModal';
 import Toast from '../components/Toast';
 import DeletedLinkMessage from '../components/DeletedLinkMessage';
 
@@ -44,6 +45,7 @@ export default function URLModeScreen({ onModePress }: URLModeScreenProps) {
   const [selectedLink, setSelectedLink] = useState<ClinkItem | null>(null);
   const [showBottomSheet, setShowBottomSheet] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showQRModal, setShowQRModal] = useState(false);
   const [toast, setToast] = useState({ visible: false, message: '', type: 'success' as 'success' | 'error' });
   const [deletedLinkId, setDeletedLinkId] = useState<string | null>(null);
 
@@ -157,12 +159,15 @@ export default function URLModeScreen({ onModePress }: URLModeScreenProps) {
   };
 
   const handleSeeQR = () => {
-    if (selectedLink) {
-      // TODO: Implement QR code view
-      Alert.alert('QR Code', `QR code for ${selectedLink.shortUrl}`, [
-        { text: 'OK' },
-      ]);
-    }
+    setShowBottomSheet(false);
+    setTimeout(() => {
+      setShowQRModal(true);
+    }, 300);
+  };
+
+  const handleSaveQR = async () => {
+    // TODO: Implement QR code save functionality
+    showToast('QR code saved!');
   };
 
   const handleDeletePress = () => {
@@ -275,6 +280,14 @@ export default function URLModeScreen({ onModePress }: URLModeScreenProps) {
           onClose={() => setShowDeleteModal(false)}
           onConfirmDelete={handleConfirmDelete}
         />
+
+        {/* QR Code Modal */}
+        <QRCodeModal
+          visible={showQRModal}
+          shortUrl={selectedLink?.shortUrl || ''}
+          onClose={() => setShowQRModal(false)}
+          onSave={handleSaveQR}
+        />
       </View>
     </SafeAreaView>
   );
@@ -283,26 +296,43 @@ export default function URLModeScreen({ onModePress }: URLModeScreenProps) {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#FAFAFA',
   },
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    paddingTop: 24,
+    paddingRight: 16,
+    paddingBottom: 24,
+    paddingLeft: 16,
+    gap: 24,
+    opacity: 1,
+    backgroundColor: '#FAFAFA',
   },
   keyboardView: {
     flex: 1,
+    width: '100%',
   },
   scrollContent: {
     paddingBottom: 40,
+    gap: 8,
+    alignItems: 'center',
   },
   linksSection: {
-    marginTop: 24,
-    marginBottom: 12,
-    paddingHorizontal: 20,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    padding: 0,
+    width: 343,
+    alignSelf: 'stretch',
+    zIndex: 2,
+    marginTop: 16,
+    marginBottom: 0,
   },
   sectionTitle: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#333333',
+    fontSize: 14,
+    fontWeight: '500',
+    lineHeight: 20,
+    color: '#52525B',
   },
 });
