@@ -302,11 +302,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     alignItems: 'flex-start',
-    paddingTop: 24,
-    paddingRight: 16,
+    paddingTop: 24, // spacing/6 - top spacing
     paddingBottom: 24,
-    paddingLeft: 16,
-    gap: 24,
     opacity: 1,
     backgroundColor: '#FAFAFA',
   },
@@ -315,18 +312,17 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   scrollContent: {
+    paddingTop: 24, // spacing/6 - between header and long link card
+    paddingHorizontal: 16, // spacing/4 - left and right padding
     paddingBottom: 40,
     gap: 8,
-    alignItems: 'center',
   },
   linksSection: {
     flexDirection: 'column',
     alignItems: 'flex-start',
-    padding: 0,
-    width: 343,
     alignSelf: 'stretch',
     zIndex: 2,
-    marginTop: 16,
+    marginTop: 24, // spacing/6 - between long link card and short link text
     marginBottom: 0,
   },
   sectionTitle: {

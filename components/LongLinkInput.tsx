@@ -96,10 +96,9 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'flex-start',
-    padding: 16,
-    gap: 12,
-    width: 343,
-    height: 150,
+    padding: 16, // spacing/4
+    gap: 16, // spacing/4 - between inside components
+    alignSelf: 'stretch',
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
     borderColor: '#E5E5E5',

@@ -117,7 +117,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FAFAFA',
-    paddingHorizontal: 16,
     paddingTop: 24,
   },
   scrollView: {
@@ -125,11 +124,12 @@ const styles = StyleSheet.create({
     marginTop: 24,
   },
   scrollContent: {
+    paddingHorizontal: 16, // spacing/4
     paddingBottom: 20,
-    gap: 24,
+    gap: 16, // spacing/4 - between sections
   },
   linksContainer: {
-    gap: 16,
+    gap: 8, // spacing/2 - between link cards
   },
   bottomSpacer: {
     height: 80,

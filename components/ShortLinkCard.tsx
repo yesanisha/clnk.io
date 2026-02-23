@@ -9,6 +9,29 @@ interface ShortLinkCardProps {
   onMenuPress?: (link: ClinkItem) => void;
 }
 
+const ThreeDotsIcon = () => (
+  <Svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M18.6667 20.0001C18.6667 19.2637 19.2637 18.6667 20.0001 18.6667C20.7365 18.6667 21.3334 19.2637 21.3334 20.0001C21.3334 20.7365 20.7365 21.3334 20.0001 21.3334C19.2637 21.3334 18.6667 20.7365 18.6667 20.0001Z"
+      fill="#52525B"
+    />
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M18.6667 15.3333C18.6667 14.597 19.2637 14 20.0001 14C20.7365 14 21.3334 14.597 21.3334 15.3333C21.3334 16.0697 20.7365 16.6667 20.0001 16.6667C19.2637 16.6667 18.6667 16.0697 18.6667 15.3333Z"
+      fill="#52525B"
+    />
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M18.6667 24.6666C18.6667 23.9302 19.2637 23.3333 20.0001 23.3333C20.7365 23.3333 21.3334 23.9302 21.3334 24.6666C21.3334 25.403 20.7365 25.9999 20.0001 25.9999C19.2637 25.9999 18.6667 25.403 18.6667 24.6666Z"
+      fill="#52525B"
+    />
+  </Svg>
+);
+
 export default function ShortLinkCard({
   link,
   onCopyPress,
@@ -117,7 +140,7 @@ export default function ShortLinkCard({
           onPress={handleMenuPress}
           activeOpacity={0.6}
         >
-          <Text style={styles.menuIcon}>⋮</Text>
+          <ThreeDotsIcon />
         </TouchableOpacity>
       </View>
     </View>
@@ -128,15 +151,13 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 10,
+    padding: 16, // spacing/4
     gap: 8,
-    width: 343,
-    height: 76,
+    alignSelf: 'stretch',
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
     borderColor: '#E5E5E5',
     borderRadius: 12,
-    alignSelf: 'stretch',
   },
   containerNew: {
     borderColor: '#4B5E2D',
@@ -200,10 +221,5 @@ const styles = StyleSheet.create({
   },
   iconButtonCopied: {
     backgroundColor: '#E8EFD8',
-  },
-  menuIcon: {
-    fontSize: 18,
-    color: '#666666',
-    fontWeight: '600',
   },
 });

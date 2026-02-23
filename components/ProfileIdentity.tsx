@@ -70,10 +70,8 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
     alignItems: 'flex-start',
-    padding: 2,
     gap: 12,
-    width: 343,
-    height: 120,
+    alignSelf: 'stretch',
     borderRadius: 12,
     opacity: 1,
     backgroundColor: 'transparent',
@@ -121,6 +119,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     gap: 8,
     flex: 1,
+    paddingRight: 16, // spacing/4 - padding from right for chevron
   },
   name: {
     fontSize: 20,
@@ -156,9 +155,15 @@ const styles = StyleSheet.create({
     borderRadius: 1,
   },
   bio: {
+    fontFamily: 'Figtree',
     fontSize: 14,
+    fontStyle: 'normal',
+    fontWeight: '400',
     lineHeight: 20,
+    letterSpacing: 0,
     color: '#737373',
+    overflow: 'hidden',
     alignSelf: 'stretch',
+    paddingRight: 16, // spacing/4 - padding from right
   },
 });

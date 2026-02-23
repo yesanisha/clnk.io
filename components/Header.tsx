@@ -10,6 +10,29 @@ interface HeaderProps {
   onLinksPress?: () => void;
 }
 
+const ThreeDotsIcon = () => (
+  <Svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M18.6667 20.0001C18.6667 19.2637 19.2637 18.6667 20.0001 18.6667C20.7365 18.6667 21.3334 19.2637 21.3334 20.0001C21.3334 20.7365 20.7365 21.3334 20.0001 21.3334C19.2637 21.3334 18.6667 20.7365 18.6667 20.0001Z"
+      fill="#52525B"
+    />
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M18.6667 15.3333C18.6667 14.597 19.2637 14 20.0001 14C20.7365 14 21.3334 14.597 21.3334 15.3333C21.3334 16.0697 20.7365 16.6667 20.0001 16.6667C19.2637 16.6667 18.6667 16.0697 18.6667 15.3333Z"
+      fill="#52525B"
+    />
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M18.6667 24.6666C18.6667 23.9302 19.2637 23.3333 20.0001 23.3333C20.7365 23.3333 21.3334 23.9302 21.3334 24.6666C21.3334 25.403 20.7365 25.9999 20.0001 25.9999C19.2637 25.9999 18.6667 25.403 18.6667 24.6666Z"
+      fill="#52525B"
+    />
+  </Svg>
+);
+
 export default function Header({
   onSharePress,
   onMorePress,
@@ -17,7 +40,8 @@ export default function Header({
   onLinksPress,
 }: HeaderProps) {
   return (
-    <View style={styles.container}>
+    <View style={styles.wrapper}>
+      <View style={styles.container}>
       {/* Left Section */}
       <View style={styles.leftSection}>
         <TouchableOpacity
@@ -81,25 +105,38 @@ export default function Header({
           onPress={onMorePress}
           activeOpacity={0.7}
         >
-          <Text style={styles.moreIcon}>⋮</Text>
+          <ThreeDotsIcon />
         </TouchableOpacity>
       </View>
+      </View>
+      {/* Border line with spacing/4 padding on both sides */}
+      <View style={styles.borderLine} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    alignSelf: 'stretch',
+    backgroundColor: 'transparent',
+  },
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    width: 343,
+    alignSelf: 'stretch',
     height: 52,
+    paddingLeft: 16, // spacing/4
+    paddingRight: 16, // spacing/4
     paddingBottom: 12,
-    borderBottomWidth: 1,
-    borderBottomColor: '#E5E5E5',
     opacity: 1,
     backgroundColor: 'transparent',
+  },
+  borderLine: {
+    height: 1,
+    backgroundColor: '#E5E5E5',
+    marginLeft: 16, // spacing/4 - padding from left
+    marginRight: 16, // spacing/4 - padding from right
   },
   leftSection: {
     flexDirection: 'row',
@@ -128,13 +165,16 @@ const styles = StyleSheet.create({
   linksDropdown: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 4,
+    gap: 4, // spacing/1 - between Links text and chevron
     borderRadius: 6,
   },
   linksText: {
     fontSize: 12,
     fontWeight: '600',
-    color: '#4B5E2D',
+    lineHeight: 16,
+    letterSpacing: 0,
+    color: '#4B5E2D', // primary
+    fontFamily: 'Figtree',
   },
   chevronDown: {
     width: 12,
@@ -183,15 +223,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   moreButton: {
-    width: 32,
+    width: 40,
     height: 40,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 6,
-  },
-  moreIcon: {
-    fontSize: 16,
-    color: '#52525B',
-    fontWeight: '600',
   },
 });

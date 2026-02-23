@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import Svg, { Path } from 'react-native-svg';
+import Svg, { Path, G } from 'react-native-svg';
 
 export interface LinkData {
   id: string;
@@ -15,6 +15,29 @@ interface LinkCardProps {
   onMenuPress?: (link: LinkData) => void;
 }
 
+const ThreeDotsIcon = () => (
+  <Svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M18.6667 20.0001C18.6667 19.2637 19.2637 18.6667 20.0001 18.6667C20.7365 18.6667 21.3334 19.2637 21.3334 20.0001C21.3334 20.7365 20.7365 21.3334 20.0001 21.3334C19.2637 21.3334 18.6667 20.7365 18.6667 20.0001Z"
+      fill="#52525B"
+    />
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M18.6667 15.3333C18.6667 14.597 19.2637 14 20.0001 14C20.7365 14 21.3334 14.597 21.3334 15.3333C21.3334 16.0697 20.7365 16.6667 20.0001 16.6667C19.2637 16.6667 18.6667 16.0697 18.6667 15.3333Z"
+      fill="#52525B"
+    />
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M18.6667 24.6666C18.6667 23.9302 19.2637 23.3333 20.0001 23.3333C20.7365 23.3333 21.3334 23.9302 21.3334 24.6666C21.3334 25.403 20.7365 25.9999 20.0001 25.9999C19.2637 25.9999 18.6667 25.403 18.6667 24.6666Z"
+      fill="#52525B"
+    />
+  </Svg>
+);
+
 const renderIconForType = (type: string) => {
   switch (type) {
     case 'website':
@@ -27,7 +50,14 @@ const renderIconForType = (type: string) => {
         </Svg>
       );
     case 'email':
-      return <Text style={iconStyles.textIcon}>@</Text>;
+      return (
+        <Svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <Path
+            d="M13.3335 7.99479C13.3335 5.04927 10.9457 2.66146 8.00016 2.66146C5.05464 2.66146 2.66683 5.04927 2.66683 7.99479C2.66683 10.9403 5.05464 13.3281 8.00016 13.3281C9.0947 13.3281 10.1122 12.9984 10.9589 12.4329L11.6986 13.5424C10.6403 14.2493 9.36836 14.6615 8.00016 14.6615C4.31826 14.6615 1.3335 11.6767 1.3335 7.99479C1.3335 4.31289 4.31826 1.32812 8.00016 1.32812C11.682 1.32812 14.6668 4.31289 14.6668 7.99479V8.99479C14.6668 10.2835 13.6222 11.3281 12.3335 11.3281C11.5307 11.3281 10.8226 10.9227 10.4027 10.3054C9.7963 10.9358 8.94403 11.3281 8.00016 11.3281C6.15922 11.3281 4.66683 9.83572 4.66683 7.99479C4.66683 6.15384 6.15922 4.66146 8.00016 4.66146C8.7507 4.66146 9.4433 4.90952 10.0005 5.32812H11.3335V8.99479C11.3335 9.54706 11.7812 9.99479 12.3335 9.99479C12.8858 9.99479 13.3335 9.54706 13.3335 8.99479V7.99479ZM8.00016 5.99479C6.89556 5.99479 6.00016 6.89019 6.00016 7.99479C6.00016 9.09939 6.89556 9.99479 8.00016 9.99479C9.10476 9.99479 10.0002 9.09939 10.0002 7.99479C10.0002 6.89019 9.10476 5.99479 8.00016 5.99479Z"
+            fill="#52525B"
+          />
+        </Svg>
+      );
     case 'linkedin':
       return (
         <Svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -73,7 +103,7 @@ export default function LinkCard({ link, onPress, onMenuPress }: LinkCardProps) 
         onPress={() => onMenuPress?.(link)}
         activeOpacity={0.7}
       >
-        <Text style={styles.menuIcon}>⋮</Text>
+        <ThreeDotsIcon />
       </TouchableOpacity>
     </TouchableOpacity>
   );
@@ -110,12 +140,19 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#171717',
+    lineHeight: 20,
+    letterSpacing: 0,
+    color: '#171717', 
+    fontFamily: 'Figtree',
   },
   value: {
     fontSize: 14,
     fontWeight: '400',
-    color: '#737373',
+    lineHeight: 20,
+    letterSpacing: 0,
+    color: '#737373', 
+    fontFamily: 'Figtree',
+    overflow: 'hidden',
   },
   menuButton: {
     width: 40,
@@ -123,11 +160,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 6,
-  },
-  menuIcon: {
-    fontSize: 16,
-    color: '#52525B',
-    fontWeight: '600',
   },
 });
 

@@ -14,7 +14,8 @@ export default function URLModeHeader({
   currentMode = 'URL',
 }: URLModeHeaderProps) {
   return (
-    <View style={styles.container}>
+    <View style={styles.wrapper}>
+      <View style={styles.container}>
       {/* Left Section */}
       <View style={styles.leftSection}>
         <TouchableOpacity
@@ -61,22 +62,35 @@ export default function URLModeHeader({
           </TouchableOpacity>
         </View>
       </View>
+      </View>
+      {/* Border line with spacing/4 padding on both sides */}
+      <View style={styles.borderLine} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    alignSelf: 'stretch',
+    backgroundColor: 'transparent',
+  },
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    width: 343,
+    alignSelf: 'stretch',
     height: 52,
+    paddingLeft: 16, // spacing/4
+    paddingRight: 16, // spacing/4
     paddingBottom: 12,
-    borderBottomWidth: 1,
-    borderBottomColor: '#E5E5E5',
     opacity: 1,
     backgroundColor: 'transparent',
+  },
+  borderLine: {
+    height: 1,
+    backgroundColor: '#E5E5E5',
+    marginLeft: 16, // spacing/4 - padding from left
+    marginRight: 16, // spacing/4 - padding from right
   },
   leftSection: {
     flexDirection: 'row',
@@ -105,13 +119,16 @@ const styles = StyleSheet.create({
   modeDropdown: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 4,
+    gap: 4, // spacing/1 - between URL text and chevron
     borderRadius: 6,
   },
   modeText: {
     fontSize: 12,
     fontWeight: '600',
-    color: '#4B5E2D',
+    lineHeight: 16,
+    letterSpacing: 0,
+    color: '#4B5E2D', // primary
+    fontFamily: 'Figtree',
   },
   chevronDown: {
     width: 12,
